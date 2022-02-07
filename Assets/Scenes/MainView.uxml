@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox style="flex-direction: row;">
+        <ui:GroupBox style="height: 181px; right: auto; align-items: auto; position: relative; top: auto; left: auto; width: 50%;">
+            <ui:ListView focusable="true" name="messages-list" style="height: 138px; width: 464px; position: relative; top: auto; left: auto;" />
+            <ui:TextField picking-mode="Ignore" label="Message" name="message-to-send" style="position: relative; height: 35px; top: auto; left: auto; right: auto; width: 455px; justify-content: center;" />
+            <ui:Button text="Send" display-tooltip-when-elided="true" name="send-button" style="position: relative; top: auto; left: auto; height: 29px; width: 71px;" />
+        </ui:GroupBox>
+        <ui:GroupBox style="align-items: auto; position: relative; flex-direction: column; flex-wrap: nowrap; height: 169px; width: 50%; top: auto; left: auto; right: auto;">
+            <ui:Button text="Execute Physics" display-tooltip-when-elided="true" name="execute-physics-button" style="width: 150px;" />
+            <ui:Button text="Client" display-tooltip-when-elided="true" name="client-button" style="width: 150px;" />
+            <ui:Button text="Host" display-tooltip-when-elided="true" name="host-button" style="flex-basis: auto; width: 150px;" />
+            <ui:Button text="Server" display-tooltip-when-elided="true" name="server-button" style="width: 150px;" />
+            <ui:Button text="Next Scene" display-tooltip-when-elided="true" name="next-scene-button" style="width: 150px;" />
+            <ui:Label text="[player info]" display-tooltip-when-elided="true" name="player-info-label" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>

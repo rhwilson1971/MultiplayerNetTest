@@ -4,7 +4,6 @@ using UnityEngine.UIElements;
 
 public class Scene2UIManager : NetworkBehaviour
 {
-
     [SerializeField]
     private Button previousSceneButton;
 
@@ -25,6 +24,7 @@ public class Scene2UIManager : NetworkBehaviour
 
         previousSceneButton = rootVisuaElement.Q<Button>("previous-scene-button");
         animateModelButton = rootVisuaElement.Q<Button>("animate-model-button");
+        disconnectButton = rootVisuaElement.Q<Button>("disconnect-button");
 
         previousSceneButton.RegisterCallback<ClickEvent>((ce) =>
         {
@@ -41,8 +41,6 @@ public class Scene2UIManager : NetworkBehaviour
             isAnimating = !isAnimating;
 
             animator.SetBool("isAnimating", isAnimating);
-
-            NetworkLog.LogInfoServer("Animating missile model");
         });
 
         disconnectButton.RegisterCallback<ClickEvent>((ce) =>
@@ -50,7 +48,7 @@ public class Scene2UIManager : NetworkBehaviour
             
         });
 
-        if(!IsServer)
+        if(IsClient && !IsHost)
         {
             previousSceneButton.SetEnabled(false);
             animateModelButton.SetEnabled(false);

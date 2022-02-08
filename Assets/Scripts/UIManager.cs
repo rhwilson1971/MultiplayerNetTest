@@ -66,10 +66,9 @@ public class UIManager : MonoBehaviour
         nextSceneButton.RegisterCallback<ClickEvent>(OnNextScene);
 
         sendMessageButton.RegisterCallback<ClickEvent>( ev => {
-            
             string myMessage = messageToSend.text;
 
-            OnNewChatMessage(myMessage);
+            // OnNewChatMessage(myMessage);
 
             if (!string.IsNullOrEmpty(myMessage) )
             {
@@ -116,12 +115,6 @@ public class UIManager : MonoBehaviour
             }
         });
 
-        NetworkManager.Singleton.OnServerStarted += () =>
-        {
-            Debug.Log("Did the server message for start occur in UI Manager?");
-            hasServerStarted = true;
-        };
-
         executePhysicsButton.RegisterCallback<ClickEvent>(ev =>
         {
             if (hasServerStarted)
@@ -131,12 +124,16 @@ public class UIManager : MonoBehaviour
             }
             SpawnControl.Instance.SpawnObjects();
         });
+
+        // NetworkManager.Singleton.OnClientDisconnectCallback += Singleton_OnClientDisconnectCallback;
+
+        NetworkManager.Singleton.OnServerStarted += () =>
+        {
+            Debug.Log("Did the server message for start occur in UI Manager?");
+            hasServerStarted = true;
+        };
     }
 
-    private void SendMessageButton_onClick()
-    {
-        throw new NotImplementedException();
-    }
 
     public void OnApproveClient(byte[] arg1, ulong arg2, NetworkManager.ConnectionApprovedDelegate callback) 
     {

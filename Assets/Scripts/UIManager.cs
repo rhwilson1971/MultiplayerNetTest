@@ -1,15 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using Unity.Netcode;
 using UnityEngine.UIElements;
 using System;
 
 public class UIManager : MonoBehaviour
 {
-    private GameObject player;
-
     [SerializeField]
     private Button startServerButton;
 
@@ -35,8 +31,7 @@ public class UIManager : MonoBehaviour
     private TextField messageToSend;
 
     [SerializeField]
-    private Button nextSceneButton
-;
+    private Button nextSceneButton;
 
     private bool hasServerStarted;
 
@@ -81,11 +76,6 @@ public class UIManager : MonoBehaviour
                 NetworkLog.LogInfoServer($"Sending chat message {myMessage}");
                 GameObject chatManager = GameObject.Find("ChatManager");
                 chatManager.GetComponent<ChatManager>().SendChat(myMessage);
-
-                //if(null != player)
-                //{
-                //    player.GetComponent<ChatManager>().SendChat(myMessage);
-                //}
             }
         });
             
@@ -169,13 +159,8 @@ public class UIManager : MonoBehaviour
     }
 
     void OnNextScene(ClickEvent ev)
-    { 
-        
-    }
-
-    public void SetPlayer(GameObject myPlayer)
     {
-        player = myPlayer;
+        NetworkManager.Singleton.SceneManager.LoadScene("Scene2", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }
 

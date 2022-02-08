@@ -128,8 +128,16 @@ public class UIManager : MonoBehaviour
         // NetworkManager.Singleton.OnClientDisconnectCallback += Singleton_OnClientDisconnectCallback;
         NetworkManager.Singleton.OnServerStarted += () =>
         {
-            Debug.Log("Did the server message for start occur in UI Manager?");
+            NetworkLog.LogErrorServer("Server started");
             hasServerStarted = true;
+        };
+
+        NetworkManager.Singleton.OnClientDisconnectCallback += (clientId) => {
+
+            NetworkLog.LogInfoServer($"Client ID=[{clientId}] was disconnected");
+            // NetworkClient client = NetworkManager.Singleton.ConnectedClients[0];
+
+            
         };
     }
 

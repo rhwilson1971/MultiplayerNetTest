@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Scene2UIManager : NetworkBehaviour
+public class Scene2UIManager : MonoBehaviour
 {
     [SerializeField]
     private Button previousSceneButton;
@@ -48,7 +48,8 @@ public class Scene2UIManager : NetworkBehaviour
             // NetworkManager.Singleton.Shutdown();
         });
 
-        if(IsClient && !IsHost)
+
+        if(NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsHost)
         {
             previousSceneButton.SetEnabled(false);
             animateModelButton.SetEnabled(false);

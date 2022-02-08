@@ -2,5 +2,6 @@
     <ui:GroupBox style="flex-direction: row-reverse;">
         <ui:Button text="Animate Model" display-tooltip-when-elided="true" name="animate-model-button" />
         <ui:Button text="Previous Scene" display-tooltip-when-elided="true" name="previous-scene-button" />
+        <ui:Button text="Disconnect" display-tooltip-when-elided="true" name="disconnect-button" />
     </ui:GroupBox>
 </ui:UXML>

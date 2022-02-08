@@ -126,7 +126,6 @@ public class UIManager : MonoBehaviour
         });
 
         // NetworkManager.Singleton.OnClientDisconnectCallback += Singleton_OnClientDisconnectCallback;
-
         NetworkManager.Singleton.OnServerStarted += () =>
         {
             Debug.Log("Did the server message for start occur in UI Manager?");

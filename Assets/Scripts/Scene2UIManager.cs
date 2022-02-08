@@ -45,7 +45,7 @@ public class Scene2UIManager : NetworkBehaviour
 
         disconnectButton.RegisterCallback<ClickEvent>((ce) =>
         {
-            
+            // NetworkManager.Singleton.Shutdown();
         });
 
         if(IsClient && !IsHost)

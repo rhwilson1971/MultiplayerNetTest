@@ -748,9 +748,9 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 127.0.0.1
+    Address: 10.0.10.27
     Port: 7778
-    ServerListenAddress: 127.0.0.1
+    ServerListenAddress: 10.0.10.27
 --- !u!1001 &577925752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2223,6 +2223,7 @@ GameObject:
   - component: {fileID: 1845932509}
   - component: {fileID: 1845932510}
   - component: {fileID: 1845932511}
+  - component: {fileID: 1845932512}
   m_Layer: 0
   m_Name: ChatManager
   m_TagString: Untagged
@@ -2273,6 +2274,19 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &1845932512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845932508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2fa94b059b597459394e5dc890a927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CCF_Config_File: CCFConfig.json
 --- !u!1 &1878521824
 GameObject:
   m_ObjectHideFlags: 0

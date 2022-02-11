@@ -6,6 +6,7 @@
             <ui:Button text="Server" display-tooltip-when-elided="true" name="server-button" style="width: 150px; height: 16px;" />
             <ui:Button text="Execute Physics" display-tooltip-when-elided="true" name="execute-physics-button" style="width: 150px; height: 16px;" />
             <ui:Button text="Next Scene" display-tooltip-when-elided="true" name="next-scene-button" style="width: 150px; height: 16px;" />
+            <ui:Button text="Drop" display-tooltip-when-elided="true" name="disconnect-button" style="width: 150px; height: 16px;" />
             <ui:Label text="[player info]" display-tooltip-when-elided="true" name="player-info-label" />
         </ui:GroupBox>
         <ui:GroupBox style="height: auto; right: auto; align-items: auto; position: relative; top: auto; left: auto; width: 50%; opacity: 1; -unity-background-image-tint-color: rgb(41, 59, 224); border-left-width: 6px; border-right-width: 6px; border-top-width: 6px; border-bottom-width: 6px; justify-content: flex-end; flex-direction: row; flex-wrap: nowrap;">

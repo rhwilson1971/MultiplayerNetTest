@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button nextSceneButton;
 
+    [SerializeField]
+    private Button disconnectButton;
+
     private bool hasServerStarted;
 
     List<string> chatMessages = new List<string>();
@@ -41,9 +44,9 @@ public class UIManager : MonoBehaviour
     {
         var rootVisuaElement = GetComponent<UIDocument>().rootVisualElement;
 
-        startServerButton    = rootVisuaElement.Q<Button>("server-button");
-        startClientButton    = rootVisuaElement.Q<Button>("client-button");
-        startHostButton      = rootVisuaElement.Q<Button>("host-button");
+        startServerButton = rootVisuaElement.Q<Button>("server-button");
+        startClientButton = rootVisuaElement.Q<Button>("client-button");
+        startHostButton = rootVisuaElement.Q<Button>("host-button");
         executePhysicsButton = rootVisuaElement.Q<Button>("execute-physics-button");
 
         playerText = rootVisuaElement.Q<Label>("player-info-label");
@@ -54,6 +57,8 @@ public class UIManager : MonoBehaviour
 
         nextSceneButton = rootVisuaElement.Q<Button>("next-scene-button");
 
+        disconnectButton = rootVisuaElement.Q<Button>("disconnect-button");
+
         // Create a new label in list to show the data
         Func<VisualElement> makeItem = () => new Label();
         Action<VisualElement, int> bindItem = (e, i) => (e as Label).text = chatMessages[i];
@@ -63,8 +68,17 @@ public class UIManager : MonoBehaviour
         messageList.fixedItemHeight = 16;
         messageList.itemsSource = chatMessages;
 
-        nextSceneButton.RegisterCallback<ClickEvent>(OnNextScene);
 
+        disconnectButton.RegisterCallback<ClickEvent>(ce =>
+        {
+            if (NetworkManager.Singleton.IsClient || 
+                NetworkManager.Singleton.IsHost || 
+                NetworkManager.Singleton.IsServer)
+                NetworkManager.Singleton.Shutdown();
+            NetworkLog.LogInfoServer("Shutting down network");
+        });
+
+        nextSceneButton.RegisterCallback<ClickEvent>(OnNextScene);
         sendMessageButton.RegisterCallback<ClickEvent>( ev => {
             string myMessage = messageToSend.text;
 
@@ -80,6 +94,7 @@ public class UIManager : MonoBehaviour
             
         startServerButton.RegisterCallback<ClickEvent>(ev =>
         {
+
             if (NetworkManager.Singleton.StartServer())
             {
                 Debug.Log("Started started");
@@ -117,7 +132,7 @@ public class UIManager : MonoBehaviour
 
         executePhysicsButton.RegisterCallback<ClickEvent>(ev =>
         {
-            if (hasServerStarted)
+            if (!hasServerStarted)
             {
                 Debug.Log("server has not been started");
                 return;

@@ -89,7 +89,9 @@ public class PlayerBallControls : NetworkBehaviour, IPlayerActions
 
     void IPlayerActions.OnLook(InputAction.CallbackContext context)
     {
-        
+        Vector2 data = context.ReadValue<Vector2>();
+
+        Debug.Log($"Reading value from on Look {data}");
     }
 
     void IPlayerActions.OnFire(InputAction.CallbackContext context)

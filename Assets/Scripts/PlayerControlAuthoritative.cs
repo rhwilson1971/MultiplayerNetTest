@@ -27,9 +27,9 @@ public class PlayerControlAuthoritative : NetworkBehaviour, IPlayerActions
     [SerializeField]
     float forwardBackPosition;
 
-    public override void OnNetworkSpawn()
+    private void OnEnable()
     {
-        NetworkLog.LogInfoServer($"OK, spawning a client IsOwner={IsOwner} IsClient={IsClient} IsLocalPlayer={IsLocalPlayer}");
+        NetworkLog.LogInfoServer($"OK, spawning a client IsOwner={IsOwner} IsClient={IsClient} IsLocalPlayer={IsLocalPlayer} IsServer {IsServer}");
 
         if(IsOwner && IsClient)
         {
@@ -39,6 +39,14 @@ public class PlayerControlAuthoritative : NetworkBehaviour, IPlayerActions
                 playerControls.Player.SetCallbacks(this);
             }
             playerControls.Player.Enable();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (IsOwner && IsClient)
+        {
+            playerControls?.Player.Disable();
         }
     }
 
